@@ -2,7 +2,7 @@
   <div class="p-6">
     <div class="py-36 text-center">
       <div class="text-4xl" @click="resetProduct()">Recipe Calculator</div>
-      <div class="mt-2 font-mono text-slate-400 dark:text-neutral-500">v1.0.1</div>
+      <div class="mt-2 font-mono text-slate-400 dark:text-neutral-500">v1.1.1</div>
     </div>
 
     <div class="grid grid-cols-1 gap-6 divide-y dark:divide-neutral-800">
