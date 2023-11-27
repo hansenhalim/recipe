@@ -1,8 +1,8 @@
 <template>
   <div class="p-6">
     <div class="py-36 text-center">
-      <div class="text-4xl">Recipe Calculator</div>
-      <div class="mt-2 font-mono text-slate-400 dark:text-neutral-500">v1.0.0</div>
+      <div class="text-4xl" @click="resetProduct()">Recipe Calculator</div>
+      <div class="mt-2 font-mono text-slate-400 dark:text-neutral-500">v1.0.1</div>
     </div>
 
     <div class="grid grid-cols-1 gap-6 divide-y dark:divide-neutral-800">
@@ -127,19 +127,11 @@
 </template>
 
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, watch } from 'vue'
 import ProductCounter from '@/components/ProductCounter.vue'
 import RecipeViewer from '@/components/RecipeViewer.vue'
 import { ComputerDesktopIcon, MoonIcon, SunIcon } from '@heroicons/vue/24/solid'
-
-if (
-  localStorage.theme === 'dark' ||
-  (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
-) {
-  document.documentElement.classList.add('dark')
-} else {
-  document.documentElement.classList.remove('dark')
-}
+import { useDark, usePreferredDark, useStorage } from '@vueuse/core'
 
 const themes = {
   light: 'Light',
@@ -147,18 +139,29 @@ const themes = {
   auto: 'System'
 }
 
-const theme = ref('auto')
+const isDark = useDark()
+const preferredDark = usePreferredDark()
 
-const PRODUCT_0 = ref(0)
-const PRODUCT_1 = ref(0)
-const PRODUCT_2 = ref(0)
-const PRODUCT_3 = ref(0)
-const PRODUCT_4 = ref(0)
-const PRODUCT_5 = ref(0)
-const PRODUCT_6 = ref(0)
-const PRODUCT_7 = ref(0)
-const PRODUCT_8 = ref(0)
-const PRODUCT_9 = ref(0)
+const theme = useStorage('vueuse-color-scheme', 'auto')
+
+watch(theme, (newTheme) => {
+  if (newTheme === 'auto') {
+    isDark.value = preferredDark.value
+  } else {
+    isDark.value = newTheme === 'dark'
+  }
+})
+
+const PRODUCT_0 = useStorage('product-0', 0)
+const PRODUCT_1 = useStorage('product-1', 0)
+const PRODUCT_2 = useStorage('product-2', 0)
+const PRODUCT_3 = useStorage('product-3', 0)
+const PRODUCT_4 = useStorage('product-4', 0)
+const PRODUCT_5 = useStorage('product-5', 0)
+const PRODUCT_6 = useStorage('product-6', 0)
+const PRODUCT_7 = useStorage('product-7', 0)
+const PRODUCT_8 = useStorage('product-8', 0)
+const PRODUCT_9 = useStorage('product-9', 0)
 
 const RECIPE_0 = computed(
   () =>
@@ -170,7 +173,7 @@ const RECIPE_0 = computed(
     3 * PRODUCT_6.value +
     3 * PRODUCT_7.value +
     1.5 * PRODUCT_8.value +
-    3.75 * PRODUCT_9.value
+    1.75 * PRODUCT_9.value
 )
 
 const RECIPE_1 = computed(
@@ -206,6 +209,20 @@ const RECIPE_4 = computed(
 )
 
 const RECIPE_5 = computed(() => 2.5 * PRODUCT_5.value)
+
+const resetProduct = () => {
+  PRODUCT_0.value =
+    PRODUCT_1.value =
+    PRODUCT_2.value =
+    PRODUCT_3.value =
+    PRODUCT_4.value =
+    PRODUCT_5.value =
+    PRODUCT_6.value =
+    PRODUCT_7.value =
+    PRODUCT_8.value =
+    PRODUCT_9.value =
+      0
+}
 
 // PRODUCT_0: PISTEL
 // PRODUCT_1: KERITING

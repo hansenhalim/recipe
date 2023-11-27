@@ -4,11 +4,14 @@
     <div class="mt-2 flex font-light">
       <button
         @click="$emit('subClick')"
+        :class="{ hidden: count <= 0 }"
         class="flex h-8 w-8 items-center justify-center rounded-full text-2xl active:bg-sky-300 dark:active:bg-cyan-700"
       >
         &minus;
       </button>
-      <div class="grow text-center text-3xl">{{ count }}</div>
+      <div :class="{ 'text-center': count > 0 }" class="grow text-3xl">
+        {{ count }}
+      </div>
       <button
         @click="$emit('addClick')"
         class="flex h-8 w-8 items-center justify-center rounded-full text-2xl active:bg-sky-300 dark:active:bg-cyan-700"
