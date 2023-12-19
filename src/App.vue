@@ -179,6 +179,7 @@ const RECIPE_0 = computed(
 const RECIPE_1 = computed(
   () =>
     0.25 * PRODUCT_0.value +
+    0.25 * PRODUCT_1.value +
     1 * PRODUCT_2.value +
     1 * PRODUCT_5.value +
     1 * PRODUCT_6.value +
