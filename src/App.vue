@@ -1,125 +1,125 @@
 <template>
-  <div class="p-6">
-    <div class="py-36 text-center">
-      <div class="text-4xl" @click="resetProduct()">Recipe Calculator</div>
-      <div class="mt-2 font-mono text-slate-400 dark:text-neutral-500">v1.1.1</div>
-    </div>
-
-    <div class="grid grid-cols-1 gap-6 divide-y dark:divide-neutral-800">
-      <div>
-        <div class="rounded-xl bg-emerald-200 py-6 dark:bg-emerald-800">
-          <div class="grid h-6 grid-cols-3 divide-x divide-emerald-300 dark:divide-emerald-700">
-            <RecipeViewer name="T" :value="RECIPE_0" />
-            <RecipeViewer name="G" :value="RECIPE_1" />
-            <RecipeViewer name="KT" :value="RECIPE_2" />
-          </div>
-        </div>
-
-        <div class="mt-2 rounded-xl bg-emerald-200 py-6 dark:bg-emerald-800">
-          <div class="grid h-6 grid-cols-3 divide-x divide-emerald-300 dark:divide-emerald-700">
-            <RecipeViewer name="KL" :value="RECIPE_3" />
-            <RecipeViewer name="TLR" :value="RECIPE_4" />
-            <RecipeViewer name="MIGOR" :value="RECIPE_5" />
-          </div>
-        </div>
-
-        <div class="mt-4 grid grid-cols-2 gap-2">
-          <ProductCounter
-            name="Pistel"
-            :count="PRODUCT_0"
-            @add-click="PRODUCT_0++"
-            @sub-click="PRODUCT_0--"
-          />
-          <ProductCounter
-            name="Keriting"
-            :count="PRODUCT_1"
-            @add-click="PRODUCT_1++"
-            @sub-click="PRODUCT_1--"
-          />
-          <ProductCounter
-            name="Lenjer Besar"
-            :count="PRODUCT_2"
-            @add-click="PRODUCT_2++"
-            @sub-click="PRODUCT_2--"
-          />
-          <ProductCounter
-            name="Tekwan"
-            :count="PRODUCT_3"
-            @add-click="PRODUCT_3++"
-            @sub-click="PRODUCT_3--"
-          />
-          <ProductCounter
-            name="Kulit"
-            :count="PRODUCT_4"
-            @add-click="PRODUCT_4++"
-            @sub-click="PRODUCT_4--"
-          />
-          <ProductCounter
-            name="Model"
-            :count="PRODUCT_5"
-            @add-click="PRODUCT_5++"
-            @sub-click="PRODUCT_5--"
-          />
-          <ProductCounter
-            name="Telur Kecil"
-            :count="PRODUCT_6"
-            @add-click="PRODUCT_6++"
-            @sub-click="PRODUCT_6--"
-          />
-          <ProductCounter
-            name="Lenjer Kecil"
-            :count="PRODUCT_7"
-            @add-click="PRODUCT_7++"
-            @sub-click="PRODUCT_7--"
-          />
-          <ProductCounter
-            name="Adaan"
-            :count="PRODUCT_8"
-            @add-click="PRODUCT_8++"
-            @sub-click="PRODUCT_8--"
-          />
-          <ProductCounter
-            name="Kapal Selam"
-            :count="PRODUCT_9"
-            @add-click="PRODUCT_9++"
-            @sub-click="PRODUCT_9--"
-          />
-        </div>
+  <div class="flex justify-center">
+    <div class="max-w-md flex-1 p-6">
+      <div class="py-36 text-center">
+        <div class="text-4xl" @click="resetProduct()">Recipe Calculator</div>
+        <div class="mt-2 font-mono text-slate-400 dark:text-neutral-500">v1.1.1</div>
       </div>
-
-      <div class="flex items-center justify-between pt-6">
-        <div class="text-slate-600 dark:text-neutral-400">Choose Theme</div>
-        <div
-          class="dark:highlight-white/5 relative flex items-center rounded-lg p-1.5 px-3 font-medium text-slate-700 shadow-sm ring-1 ring-slate-900/10 dark:bg-slate-600 dark:text-slate-200 dark:ring-0"
-        >
-          <SunIcon
-            :class="{ hidden: theme !== 'light' }"
-            class="mr-2 h-5 w-5 text-gray-500 dark:text-gray-300"
-          />
-          <MoonIcon
-            :class="{ hidden: theme !== 'dark' }"
-            class="mr-2 h-5 w-5 text-gray-500 dark:text-gray-300"
-          />
-          <ComputerDesktopIcon
-            :class="{ hidden: theme !== 'auto' }"
-            class="mr-2 h-5 w-5 text-gray-500 dark:text-gray-300"
-          />
-          <span>{{ themes[theme] }}</span>
-          <svg class="ml-2 h-6 w-6 text-slate-400" fill="none">
-            <path
-              d="m15 11-3 3-3-3"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            ></path>
-          </svg>
-
-          <select v-model="theme" class="absolute inset-0 h-full w-full appearance-none opacity-0">
-            <option value="light">Light</option>
-            <option value="dark">Dark</option>
-            <option value="auto">System</option>
-          </select>
+      <div class="grid grid-cols-1 gap-6 divide-y dark:divide-neutral-800">
+        <div>
+          <div class="rounded-xl bg-emerald-200 py-6 dark:bg-emerald-800">
+            <div class="grid h-6 grid-cols-3 divide-x divide-emerald-300 dark:divide-emerald-700">
+              <RecipeViewer name="T" :value="RECIPE_0" />
+              <RecipeViewer name="G" :value="RECIPE_1" />
+              <RecipeViewer name="KT" :value="RECIPE_2" />
+            </div>
+          </div>
+          <div class="mt-2 rounded-xl bg-emerald-200 py-6 dark:bg-emerald-800">
+            <div class="grid h-6 grid-cols-3 divide-x divide-emerald-300 dark:divide-emerald-700">
+              <RecipeViewer name="KL" :value="RECIPE_3" />
+              <RecipeViewer name="TLR" :value="RECIPE_4" />
+              <RecipeViewer name="MIGOR" :value="RECIPE_5" />
+            </div>
+          </div>
+          <div class="mt-4 grid grid-cols-2 gap-2">
+            <ProductCounter
+              name="Pistel"
+              :count="PRODUCT_0"
+              @add-click="PRODUCT_0++"
+              @sub-click="PRODUCT_0--"
+            />
+            <ProductCounter
+              name="Keriting"
+              :count="PRODUCT_1"
+              @add-click="PRODUCT_1++"
+              @sub-click="PRODUCT_1--"
+            />
+            <ProductCounter
+              name="Lenjer Besar"
+              :count="PRODUCT_2"
+              @add-click="PRODUCT_2++"
+              @sub-click="PRODUCT_2--"
+            />
+            <ProductCounter
+              name="Tekwan"
+              :count="PRODUCT_3"
+              @add-click="PRODUCT_3++"
+              @sub-click="PRODUCT_3--"
+            />
+            <ProductCounter
+              name="Kulit"
+              :count="PRODUCT_4"
+              @add-click="PRODUCT_4++"
+              @sub-click="PRODUCT_4--"
+            />
+            <ProductCounter
+              name="Model"
+              :count="PRODUCT_5"
+              @add-click="PRODUCT_5++"
+              @sub-click="PRODUCT_5--"
+            />
+            <ProductCounter
+              name="Telur Kecil"
+              :count="PRODUCT_6"
+              @add-click="PRODUCT_6++"
+              @sub-click="PRODUCT_6--"
+            />
+            <ProductCounter
+              name="Lenjer Kecil"
+              :count="PRODUCT_7"
+              @add-click="PRODUCT_7++"
+              @sub-click="PRODUCT_7--"
+            />
+            <ProductCounter
+              name="Adaan"
+              :count="PRODUCT_8"
+              @add-click="PRODUCT_8++"
+              @sub-click="PRODUCT_8--"
+            />
+            <ProductCounter
+              name="Kapal Selam"
+              :count="PRODUCT_9"
+              @add-click="PRODUCT_9++"
+              @sub-click="PRODUCT_9--"
+            />
+          </div>
+        </div>
+        <div class="flex items-center justify-between pt-6">
+          <div class="text-slate-600 dark:text-neutral-400">Choose Theme</div>
+          <div
+            class="dark:highlight-white/5 relative flex items-center rounded-lg p-1.5 px-3 font-medium text-slate-700 shadow-sm ring-1 ring-slate-900/10 dark:bg-slate-600 dark:text-slate-200 dark:ring-0"
+          >
+            <SunIcon
+              :class="{ hidden: theme !== 'light' }"
+              class="mr-2 h-5 w-5 text-gray-500 dark:text-gray-300"
+            />
+            <MoonIcon
+              :class="{ hidden: theme !== 'dark' }"
+              class="mr-2 h-5 w-5 text-gray-500 dark:text-gray-300"
+            />
+            <ComputerDesktopIcon
+              :class="{ hidden: theme !== 'auto' }"
+              class="mr-2 h-5 w-5 text-gray-500 dark:text-gray-300"
+            />
+            <span>{{ themes[theme] }}</span>
+            <svg class="ml-2 h-6 w-6 text-slate-400" fill="none">
+              <path
+                d="m15 11-3 3-3-3"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </svg>
+            <select
+              v-model="theme"
+              class="absolute inset-0 h-full w-full appearance-none opacity-0"
+            >
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="auto">System</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
